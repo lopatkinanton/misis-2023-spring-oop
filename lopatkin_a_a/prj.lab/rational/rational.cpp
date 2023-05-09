@@ -5,8 +5,7 @@
 #include <string>
 
 Rational::Rational(const int32_t num) noexcept
-    :num_(num)
-    ,denom_(1)
+    :Rational(num, 1)
 {
 }
 
@@ -14,6 +13,8 @@ Rational::Rational(const int32_t num, const int32_t denom) {
     if (denom == 0) {
         throw std::invalid_argument("division by zero");
     }
+    num_ = num;
+    denom_ = denom ;
     normalize();
 }
 
@@ -47,28 +48,53 @@ std::istream& Rational::readFrom(std::istream& istrm) noexcept {
 }
 
 
-
 Rational& Rational::operator+=(const Rational& rhs) noexcept {
     num_ = num_ * rhs.denom_ + rhs.num_ * denom_;
     denom_ = denom_ * rhs.denom_;
+    normalize();
     return *this;
 }
 
 Rational& Rational::operator-=(const Rational& rhs) noexcept {
     num_ = num_ * rhs.denom_ - rhs.num_ * denom_;
     denom_ = denom_ * rhs.denom_;
+    normalize();
     return *this;
 }
 
 Rational& Rational::operator*=(const Rational& rhs) noexcept {
     num_ = num_ * rhs.num_;
     denom_ = denom_ * rhs.denom_;
+    normalize();
     return *this;
 }
 
 Rational& Rational::operator/=(const Rational& rhs) {
+    if (rhs.num_ == 0) {
+        throw std::invalid_argument("division by zero");
+    }
     num_ = num_ * rhs.denom_;
     denom_ = denom_ * rhs.num_;
+    normalize();
+    return *this;
+}
+
+Rational& Rational::operator*=(const int32_t& rhs) noexcept {
+    num_ *= rhs;
+    normalize();
+    return *this;
+}
+Rational& Rational::operator+=(const int32_t& rhs) noexcept {
+    num_ += rhs * denom_;
+    return *this;
+}
+Rational& Rational::operator-=(const int32_t& rhs) noexcept {
+    num_ -= rhs * denom_;
+    return *this;
+}
+Rational& Rational::operator/=(const int32_t& rhs) {
+    denom_ *= rhs;
+    normalize();
     return *this;
 }
 
@@ -83,3 +109,10 @@ bool Rational::operator>(const Rational& rhs) const noexcept { return ((num_ * r
 bool operator<(const Rational& lhs, const Rational& rhs) { return rhs.operator>(lhs); }
 bool operator<=(const Rational& lhs, const Rational& rhs) { return !lhs.operator>(rhs); }
 bool operator>=(const Rational& lhs, const Rational& rhs) { return !rhs.operator>(lhs); }
+
+bool Rational::operator==(const int32_t& rhs) const noexcept { return (num_ == rhs) && (denom_ == 1); }
+bool Rational::operator!=(const int32_t& rhs) const noexcept { return !operator==(rhs); }
+bool Rational::operator>(const int32_t& rhs) const noexcept { return ((num_ - rhs * denom_) > 0); }
+bool Rational::operator<(const int32_t& rhs) const noexcept { return ((num_ - rhs * denom_) < 0); }
+bool Rational::operator>=(const int32_t& rhs) const noexcept { return ((num_ - rhs * denom_) >= 0); }
+bool Rational::operator<=(const int32_t& rhs) const noexcept { return ((num_ - rhs * denom_) <= 0); }

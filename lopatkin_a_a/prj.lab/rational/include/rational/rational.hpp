@@ -4,6 +4,7 @@
 
 #include <iosfwd>
 #include <cstdint>
+#include <numeric>
 
 class Rational {
 public:
@@ -26,17 +27,26 @@ public:
     bool operator>=(const Rational& ) const noexcept;
     bool operator<=(const Rational& ) const noexcept;
 
+    bool operator==(const int32_t&) const noexcept;
+    bool operator!=(const int32_t&) const noexcept;
+    bool operator>(const int32_t&) const noexcept;
+    bool operator<(const int32_t&) const noexcept;
+    bool operator>=(const int32_t&) const noexcept;
+    bool operator<=(const int32_t&) const noexcept;
+
     Rational operator-() noexcept;
 
     explicit operator bool() const noexcept;
 
     Rational& operator*=(const Rational& rhs) noexcept;
-
     Rational& operator+=(const Rational& rhs) noexcept;
-
     Rational& operator-=(const Rational& rhs) noexcept;
-
     Rational& operator/=(const Rational& rhs);
+
+    Rational& operator*=(const int32_t& rhs) noexcept;
+    Rational& operator+=(const int32_t& rhs) noexcept;
+    Rational& operator-=(const int32_t& rhs) noexcept;
+    Rational& operator/=(const int32_t& rhs);
 
     std::istream& readFrom(std::istream& istrm) noexcept;
     std::ostream& writeTo(std::ostream& ostrm) const noexcept;
@@ -51,6 +61,9 @@ public:
             denom_ = -denom_;
             num_ = -num_;
         }
+        int gcd = std::gcd(num_, denom_);
+        num_ /= gcd;
+        denom_ /= gcd;
     };
 };
     
@@ -72,6 +85,38 @@ inline Rational operator/(const Rational& lhs, const Rational& rhs) {
 
 inline Rational operator*(const Rational& lhs, const Rational& rhs) noexcept {
   return Rational(lhs) *= rhs;
+}
+
+inline Rational operator+(const Rational& lhs, const int32_t& rhs) noexcept {
+    return Rational(lhs) += rhs;
+}
+
+inline Rational operator-(const Rational& lhs, const int32_t& rhs) noexcept {
+    return Rational(lhs) -= rhs;
+}
+
+inline Rational operator/(const Rational& lhs, const int32_t& rhs) {
+    return Rational(lhs) /= rhs;
+}
+
+inline Rational operator*(const Rational& lhs, const int32_t& rhs) noexcept {
+    return Rational(lhs) *= rhs;
+}
+
+inline Rational operator+(const int32_t& lhs, const Rational& rhs) noexcept {
+    return Rational(lhs) += rhs;
+}
+
+inline Rational operator-(const int32_t& lhs, const Rational& rhs) noexcept {
+    return Rational(lhs) -= rhs;
+}
+
+inline Rational operator/(const int32_t& lhs, const Rational& rhs) {
+    return Rational(lhs) /= rhs;
+}
+
+inline Rational operator*(const int32_t& lhs, const Rational& rhs) noexcept {
+    return Rational(lhs) *= rhs;
 }
 
 #endif
