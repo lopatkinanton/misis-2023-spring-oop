@@ -46,18 +46,30 @@ std::istream& Rational::readFrom(std::istream& istrm) noexcept {
     return istrm;
 }
 
-void operator+=(Rational& lhs, const Rational& rhs) {
-    lhs = Rational();
+
+
+Rational& Rational::operator+=(const Rational& rhs) noexcept {
+    num_ = num_ * rhs.denom_ + rhs.num_ * denom_;
+    denom_ = denom_ * rhs.denom_;
+    return *this;
 }
 
-void operator-=(Rational& lhs, const Rational& rhs) {
-    lhs = Rational();
+Rational& Rational::operator-=(const Rational& rhs) noexcept {
+    num_ = num_ * rhs.denom_ - rhs.num_ * denom_;
+    denom_ = denom_ * rhs.denom_;
+    return *this;
 }
-void operator/=(Rational& lhs, const Rational& rhs) {
-    lhs = Rational();
+
+Rational& Rational::operator*=(const Rational& rhs) noexcept {
+    num_ = num_ * rhs.num_;
+    denom_ = denom_ * rhs.denom_;
+    return *this;
 }
-void operator*=(Rational& lhs, const Rational& rhs) {
-    lhs = Rational();
+
+Rational& Rational::operator/=(const Rational& rhs) {
+    num_ = num_ * rhs.denom_;
+    denom_ = denom_ * rhs.num_;
+    return *this;
 }
 
 Rational Rational::operator-() noexcept {

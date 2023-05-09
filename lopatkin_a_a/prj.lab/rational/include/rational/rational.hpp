@@ -6,7 +6,7 @@
 #include <cstdint>
 
 class Rational {
-  public:
+public:
     Rational() = default;
     Rational(const Rational&) = default;
     Rational(Rational&&) = default;
