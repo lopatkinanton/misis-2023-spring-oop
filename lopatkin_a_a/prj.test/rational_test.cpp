@@ -52,4 +52,3 @@ TEST_CASE("[rational] - mixed arithmetic") {
     CHECK(3 * Rational(2, 3) == Rational(2, 1));
     CHECK(3 / Rational(2, 1) == Rational(3, 2));
 }
-

@@ -32,13 +32,13 @@ std::istream& Rational::readFrom(std::istream& istrm) noexcept {
     int32_t num(0);
     int32_t denom(1);
     char division_symbol(0);
-    istrm >> num;
-    istrm >> division_symbol;
-    istrm >> denom;
+    istrm >> num >> division_symbol >> denom;
     if (istrm.good() || !istrm.fail() && istrm.eof()) {
         if (Rational::separator == division_symbol) {
-            istrm.clear();
             *this = Rational(num, denom);
+            if (denom < 0) {
+                istrm.setstate(std::ios_base::failbit);
+            }
         }
         else {
             istrm.setstate(std::ios_base::failbit);
