@@ -3,8 +3,10 @@
 
 #include <arrayt/arrayt.hpp>
 
-#include <sstream>
-
 TEST_CASE("[arrayt] - ArrayT ctor") {
-    //CHECK();
+    ArrayT<int> arr(1);
+    CHECK(arr[0] == 0);
+
+    ArrayT<double> arr1(1);
+    CHECK(arr[0] == 0.0);
 }

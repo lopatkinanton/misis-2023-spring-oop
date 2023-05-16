@@ -21,13 +21,16 @@ Rational::Rational(const int32_t num, const int32_t denom) {
 std::ostream& operator<<(std::ostream& ostrm, const Rational& rhs) noexcept {
     return rhs.writeTo(ostrm);
 }
+
 std::ostream& Rational::writeTo(std::ostream& ostrm) const noexcept {
     ostrm << num_ << separator << denom_;
     return ostrm;
 }
+
 std::istream& operator>>(std::istream& istrm, Rational& rhs) noexcept {
     return rhs.readFrom(istrm);
 }
+
 std::istream& Rational::readFrom(std::istream& istrm) noexcept {
     int32_t num(0);
     int32_t denom(1);
@@ -46,7 +49,6 @@ std::istream& Rational::readFrom(std::istream& istrm) noexcept {
     }
     return istrm;
 }
-
 
 Rational& Rational::operator+=(const Rational& rhs) noexcept {
     num_ = num_ * rhs.denom_ + rhs.num_ * denom_;
