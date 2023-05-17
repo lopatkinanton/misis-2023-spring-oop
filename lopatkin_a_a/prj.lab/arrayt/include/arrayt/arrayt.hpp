@@ -111,7 +111,7 @@ void ArrayT<T>::resize(const std::ptrdiff_t new_size) {
         data_ = new_data;
     }
     else if (ssize_ < new_size) {
-        std::fill(data_ + ssize_, data_ + new_size, T);                                   ////////////////////////////////////
+        std::fill(data_ + ssize_, data_ + new_size, T());
     }
     ssize_ = new_size;
 }
