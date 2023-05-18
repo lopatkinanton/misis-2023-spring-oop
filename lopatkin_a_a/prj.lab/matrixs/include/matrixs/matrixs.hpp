@@ -52,7 +52,9 @@ public:
     [[nodiscard]] std::ptrdiff_t nCols() const noexcept;
 
 private:
-
+    std::ptrdiff_t m_ = 0;
+    std::ptrdiff_t n_ = 0;
+    int** data_ = nullptr;
 };
 
 #endif

@@ -6,5 +6,6 @@
 #include <sstream>
 
 TEST_CASE("[matrixs] - MatrixS ctor") {
-  //CHECK();
+    MatrixS m(1, 1);
+    CHECK(m.at(0, 0) == 0);
 }
