@@ -4,14 +4,13 @@
 #include <algorithm>
 #include <cstddef>
 
-ArrayD::ArrayD(const std::ptrdiff_t size) 
-    : ssize_(size) 
-{
-    if (ssize_ < 0) {
+ArrayD::ArrayD(const std::ptrdiff_t size) {
+    if (size < 0) {
         throw std::invalid_argument("size can't be negative");
     }
     if (size > 0) {
-        capacity_ = ssize_;
+        ssize_ = size;
+        capacity_ = size;
         data_ = new double[capacity_] {};
     }
 }

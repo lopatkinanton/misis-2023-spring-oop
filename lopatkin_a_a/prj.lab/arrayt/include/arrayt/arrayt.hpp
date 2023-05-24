@@ -35,14 +35,13 @@ private:
 };
 
 template <typename T>
-ArrayT<T>::ArrayT(const std::ptrdiff_t size)
-    : ssize_(size)
-{
+ArrayT<T>::ArrayT(const std::ptrdiff_t size) {
     if (ssize_ < 0) {
         throw std::invalid_argument("size can't be negative");
     }
     if (size > 0) {
-        capacity_ = ssize_;
+        ssize_ = size;
+        capacity_ = size;
         data_ = new T[capacity_]{};
     }
 }
