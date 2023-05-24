@@ -11,7 +11,7 @@ ArrayD::ArrayD(const std::ptrdiff_t size) {
     if (size > 0) {
         ssize_ = size;
         capacity_ = size;
-        data_ = new double[capacity_] {};
+        data_ = new double[capacity_]{};
     }
 }
 

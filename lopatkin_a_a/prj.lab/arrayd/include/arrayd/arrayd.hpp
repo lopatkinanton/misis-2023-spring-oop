@@ -6,7 +6,6 @@
 
 class ArrayD {
 public:
-    ArrayD() = default;
     explicit ArrayD(const std::ptrdiff_t size = 0);
     ~ArrayD();
 

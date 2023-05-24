@@ -10,6 +10,9 @@ TEST_CASE("[arrayd] - ArrayD ctor") {
 
     ArrayD arr2(arr1);
     CHECK(arr2[0] == 0.0);
+
+    ArrayD arr(0);
+    CHECK(arr.ssize() == 0);
 }
 
 TEST_CASE("[arrayd] - ArrayD insert") {

@@ -9,7 +9,6 @@
 template <typename T>
 class ArrayT {
 public:
-    ArrayT() = default;
     explicit ArrayT(const std::ptrdiff_t size = 0);
     ~ArrayT();
 
