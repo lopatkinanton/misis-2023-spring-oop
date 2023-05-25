@@ -35,7 +35,14 @@ std::istream& Rational::readFrom(std::istream& istrm) noexcept {
     int32_t num(0);
     int32_t denom(1);
     char division_symbol(0);
-    istrm >> num >> division_symbol >> denom;
+    while (!istrm.eof()) {
+        char symb = istrm.get();
+        if (symb != ' ') {
+            istrm.unget();
+            break;
+        }
+    }
+    istrm >> std::noskipws >> num >> division_symbol >> denom;
     if (istrm.good() || !istrm.fail() && istrm.eof()) {
         if (Rational::separator == division_symbol) {
             *this = Rational(num, denom);
