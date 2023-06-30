@@ -1,5 +1,25 @@
+project(main)
+
 find_package(OpenCV REQUIRED)
-add_executable(main main.cpp)
-target_link_libraries(main
-	PRIVATE opencv_core opencv_imgproc opencv_imgcodecs opencv_highgui
+
+find_package(Doxygen)
+if (DOXYGEN_FOUND)
+	add_custom_target(docs ${DOXYGEN_EXECUTABLE} docs.doxyfile
+	COMMENT "Generating API documentation with Doxygen"
+	VERBATIM
+	SOURCES ${PRJ_DOXY}
+	WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+endif()
+
+include_directories(metrics/include)
+
+add_executable(${PROJECT_NAME} main.cpp)
+
+add_subdirectory(metrics)
+
+target_link_libraries(${PROJECT_NAME}
+	PRIVATE opencv_core opencv_imgcodecs
+	PUBLIC metrics
 )
+
+install(TARGETS ${PROJECT_NAME})
