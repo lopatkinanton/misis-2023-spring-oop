@@ -1,0 +1,99 @@
+\doxysection{Файл prj.\+cw/metrics/include/metrics/metrics.hpp}
+\hypertarget{metrics_8hpp}{}\label{metrics_8hpp}\index{prj.cw/metrics/include/metrics/metrics.hpp@{prj.cw/metrics/include/metrics/metrics.hpp}}
+
+
+Заголовочный файл с объявлением функций для расчета метрик.  
+
+
+{\ttfamily \#include $<$opencv2/core.\+hpp$>$}\newline
+\doxysubsubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{metrics_8hpp_a53b65eee0c85fd9b55dc5c4ced0fdb32}{DRD}} (const cv\+::\+Mat1b \&img\+\_\+\+GT, const cv\+::\+Mat1b \&img\+\_\+bin, int m=5, int n=8)
+\begin{DoxyCompactList}\small\item\em Вычисляет метрику Distance-\/\+Reciprocal Distortion (DRD) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{metrics_8hpp_ac9a2e72a73643c9dea97d4d68c15807a}{MPM}} (const cv\+::\+Mat1b \&img\+\_\+\+GT, const cv\+::\+Mat1b \&img\+\_\+bin)
+\begin{DoxyCompactList}\small\item\em Вычисляет Misclassification penalty metric (MPM) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{metrics_8hpp_a6b58095cb602fde1b3a00ebcea0bf474}{FMeasure}} (const cv\+::\+Mat1b \&img\+\_\+\+GT, const cv\+::\+Mat1b \&img\+\_\+bin)
+\begin{DoxyCompactList}\small\item\em Вычисляет F-\/\+Measure. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{metrics_8hpp_a8176bd256dd504752fa82d2e80770c92}{PSNR}} (const cv\+::\+Mat1b \&img\+\_\+\+GT, const cv\+::\+Mat1b \&img\+\_\+bin)
+\begin{DoxyCompactList}\small\item\em Вычисляет метрику Peak-\/\+Signal-\/to-\/\+Noise-\/\+Ratio (PSNR) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Заголовочный файл с объявлением функций для расчета метрик. 
+
+
+
+\doxysubsection{Функции}
+\Hypertarget{metrics_8hpp_a53b65eee0c85fd9b55dc5c4ced0fdb32}\label{metrics_8hpp_a53b65eee0c85fd9b55dc5c4ced0fdb32} 
+\index{metrics.hpp@{metrics.hpp}!DRD@{DRD}}
+\index{DRD@{DRD}!metrics.hpp@{metrics.hpp}}
+\doxysubsubsection{\texorpdfstring{DRD()}{DRD()}}
+{\footnotesize\ttfamily double DRD (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat1b \&}]{img\+\_\+\+GT,  }\item[{const cv\+::\+Mat1b \&}]{img\+\_\+bin,  }\item[{int}]{m = {\ttfamily 5},  }\item[{int}]{n = {\ttfamily 8} }\end{DoxyParamCaption})}
+
+
+
+Вычисляет метрику Distance-\/\+Reciprocal Distortion (DRD) 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em img\+\_\+\+GT} & -\/ эталонное изображение (Ground Truth) \\
+\hline
+\mbox{\texttt{ in}}  & {\em img\+\_\+bin} & -\/ бинаризованное изображение, такого же размера как и Ground Truth \\
+\hline
+\mbox{\texttt{ in}}  & {\em m} & -\/ сторона квадратной матрицы весов \\
+\hline
+\mbox{\texttt{ in}}  & {\em n} & -\/ сторона блока для вычисления NUBN \\
+\hline
+\end{DoxyParams}
+\Hypertarget{metrics_8hpp_a6b58095cb602fde1b3a00ebcea0bf474}\label{metrics_8hpp_a6b58095cb602fde1b3a00ebcea0bf474} 
+\index{metrics.hpp@{metrics.hpp}!FMeasure@{FMeasure}}
+\index{FMeasure@{FMeasure}!metrics.hpp@{metrics.hpp}}
+\doxysubsubsection{\texorpdfstring{FMeasure()}{FMeasure()}}
+{\footnotesize\ttfamily double FMeasure (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat1b \&}]{img\+\_\+\+GT,  }\item[{const cv\+::\+Mat1b \&}]{img\+\_\+bin }\end{DoxyParamCaption})}
+
+
+
+Вычисляет F-\/\+Measure. 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em img\+\_\+\+GT} & -\/ эталонное изображение (Ground Truth) \\
+\hline
+\mbox{\texttt{ in}}  & {\em img\+\_\+bin} & -\/ бинаризованное изображение, такого же размера как и Ground Truth \\
+\hline
+\end{DoxyParams}
+\Hypertarget{metrics_8hpp_ac9a2e72a73643c9dea97d4d68c15807a}\label{metrics_8hpp_ac9a2e72a73643c9dea97d4d68c15807a} 
+\index{metrics.hpp@{metrics.hpp}!MPM@{MPM}}
+\index{MPM@{MPM}!metrics.hpp@{metrics.hpp}}
+\doxysubsubsection{\texorpdfstring{MPM()}{MPM()}}
+{\footnotesize\ttfamily double MPM (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat1b \&}]{img\+\_\+\+GT,  }\item[{const cv\+::\+Mat1b \&}]{img\+\_\+bin }\end{DoxyParamCaption})}
+
+
+
+Вычисляет Misclassification penalty metric (MPM) 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em img\+\_\+\+GT} & -\/ эталонное изображение (Ground Truth) \\
+\hline
+\mbox{\texttt{ in}}  & {\em img\+\_\+bin} & -\/ бинаризованное изображение, такого же размера как и Ground Truth \\
+\hline
+\end{DoxyParams}
+\Hypertarget{metrics_8hpp_a8176bd256dd504752fa82d2e80770c92}\label{metrics_8hpp_a8176bd256dd504752fa82d2e80770c92} 
+\index{metrics.hpp@{metrics.hpp}!PSNR@{PSNR}}
+\index{PSNR@{PSNR}!metrics.hpp@{metrics.hpp}}
+\doxysubsubsection{\texorpdfstring{PSNR()}{PSNR()}}
+{\footnotesize\ttfamily double PSNR (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat1b \&}]{img\+\_\+\+GT,  }\item[{const cv\+::\+Mat1b \&}]{img\+\_\+bin }\end{DoxyParamCaption})}
+
+
+
+Вычисляет метрику Peak-\/\+Signal-\/to-\/\+Noise-\/\+Ratio (PSNR) 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em img\+\_\+\+GT} & -\/ эталонное изображение (Ground Truth) \\
+\hline
+\mbox{\texttt{ in}}  & {\em img\+\_\+bin} & -\/ бинаризованное изображение, такого же размера как и Ground Truth \\
+\hline
+\end{DoxyParams}
